@@ -1,0 +1,31 @@
+load("@bazel_gazelle//:def.bzl", "gazelle")
+
+# gazelle:prefix github.com/second-state/WasmEdge-go
+gazelle(name = "gazelle")
+
+load("@com_github_bazelbuild_buildtools//buildifier:def.bzl", "buildifier")
+
+buildifier(name = "buildifier")
+
+load("@bazel_skylib//lib:selects.bzl", "selects")
+
+selects.config_setting_group(
+    name = "linux_aarch64",
+    match_all = ["@platforms//os:linux", "@platforms//cpu:aarch64"]
+)
+
+selects.config_setting_group(
+    name = "linux_amd64",
+    match_all = ["@platforms//os:linux", "@platforms//cpu:x86_64"]
+)
+
+cc_library(
+    name = "wasmedge_lib",
+    srcs = select({
+        ":linux_aarch64": glob(["lib/linux-aarch64/*"]),
+        ":linux_amd64": glob(["lib/linux-amd64/*"]),
+    }),
+    hdrs = glob(["lib/include/**/*"]),
+    includes = ["lib/include"],
+    visibility = ["//visibility:public"],
+)
