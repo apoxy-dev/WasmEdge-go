@@ -42,3 +42,9 @@ go_test(
     srcs = ["limit_test.go"],
     embed = [":wasmedge"],
 )
+
+alias(
+    name = "go_default_library",
+    actual = ":wasmedge",
+    visibility = ["//visibility:public"],
+)
