@@ -132,6 +132,7 @@ func (self *Module) WasiGetExitCode() uint {
 	return uint(C.WasmEdge_ModuleInstanceWASIGetExitCode(self._inner))
 }
 
+/*
 func NewWasiNNModule() *Module {
 	module := C.WasmEdge_ModuleInstanceCreateWasiNN()
 	if module == nil {
@@ -208,6 +209,7 @@ func (self *Module) InitWasmEdgeProcess(allowedcmds []string, allowall bool) {
 
 	freeCStringArray(ccmds)
 }
+*/
 
 func (self *Module) AddFunction(name string, inst *Function) {
 	C.WasmEdge_ModuleInstanceAddFunction(self._inner, toWasmEdgeStringWrap(name), inst._inner)
