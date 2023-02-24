@@ -33,7 +33,7 @@ go_library(
         "-Ilib/include/wasmedge",
     ],
     clinkopts = ["-Llib/linux-aarch64/", "-ldl", "-lm", "-pthread", "-lstdc++"],
-    importpath = "github.com/second-state/WasmEdge-go/wasmedge",
+    importpath = "github.com/apoxy-dev/WasmEdge-go/wasmedge",
     visibility = ["//visibility:public"],
 )
 
