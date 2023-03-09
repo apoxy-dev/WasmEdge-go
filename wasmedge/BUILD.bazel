@@ -34,7 +34,7 @@ go_library(
     ],
     clinkopts = select({
         "//:linux_aarch64": ["-Llib/linux-aarch64/", "-ldl", "-lm", "-pthread", "-lstdc++"],
-        "//:linux_amd64": ["-Llib/linux-amd64/", "-ldl", "-lm", "-pthread", "-lstdc++"],
+        "//:linux_amd64": ["-Llib/linux-amd64/", "-lc", "-ldl", "-lm", "-pthread", "-lstdc++"],
     }),
     importpath = "github.com/apoxy-dev/WasmEdge-go/wasmedge",
     visibility = ["//visibility:public"],
