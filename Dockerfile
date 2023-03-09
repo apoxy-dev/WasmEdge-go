@@ -24,3 +24,4 @@ RUN git clone https://github.com/WasmEdge/WasmEdge.git && \
 
 FROM scratch AS export-stage
 COPY --from=build-stage /WasmEdge/build/lib/api/libwasmedge.a /
+COPY --from=build-stage /usr/lib/gcc/x86_64-linux-gnu/9/libstdc++.a /
